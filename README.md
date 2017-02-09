@@ -1,7 +1,7 @@
 # Java 2D RPG
 
-#### **Author(s):** Jason Whiting and Joshua Allen. 
-##### Code inspired by CodeNMore's "NEW Beginner 2D Game Programming" YouTube series.
+### **Author(s):** Jason Whiting and Joshua Allen. 
+#### Code inspired by CodeNMore's "NEW Beginner 2D Game Programming" YouTube series.
 
 This game is a tile-based, top-down RPG similar to the Pokemon series. The majority of code
 was written as I followed CodeNMore's YouTube series, with slight personal changes made along
