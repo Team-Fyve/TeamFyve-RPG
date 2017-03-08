@@ -1,6 +1,5 @@
 package dev.whiting.javatilegame.gfx;
 
-import dev.whiting.javatilegame.Game;
 import dev.whiting.javatilegame.Handler;
 import dev.whiting.javatilegame.entities.Entity;
 import dev.whiting.javatilegame.tiles.Tile;

@@ -3,8 +3,6 @@ package dev.whiting.javatilegame.states;
 import java.awt.Graphics;
 
 import dev.whiting.javatilegame.Handler;
-import dev.whiting.javatilegame.entities.creatures.Player;
-import dev.whiting.javatilegame.entities.statics.Tree;
 import dev.whiting.javatilegame.worlds.World;
 
 public class GameState extends State {

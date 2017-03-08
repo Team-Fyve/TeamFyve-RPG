@@ -1,11 +1,9 @@
 package dev.whiting.javatilegame.entities.statics;
 
-import java.awt.Color;
 import java.awt.Graphics;
 
 import dev.whiting.javatilegame.Handler;
 import dev.whiting.javatilegame.gfx.Assets;
-import dev.whiting.javatilegame.tiles.Tile;
 
 public class Tree extends StaticEntity {
 
