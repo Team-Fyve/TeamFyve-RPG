@@ -6,14 +6,21 @@ public class Assets {
 	
 	private static final int sWidth = 32, sHeight = 50, tWidth = 100, tHeight = 100;
 	
-	public static BufferedImage grass, stone, rock, tree;
+	public static BufferedImage grass, stone, rock, tree, redButton, greenButton;
 	public static BufferedImage[] player_down, player_up, player_left, player_right;
+	public static BufferedImage[] btn_start;
 
 	public static void init() {
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/TestSpriteSheet.png"));
 		SpriteSheet tiles = new SpriteSheet(ImageLoader.loadImage("/textures/GroundTiles.jpg"));
 		SpriteSheet extra = new SpriteSheet(ImageLoader.loadImage("/textures/ExtraTiles.png"));
 		SpriteSheet stat = new SpriteSheet(ImageLoader.loadImage("/textures/TestTreeSprite.png"));
+		SpriteSheet redButton = new SpriteSheet(ImageLoader.loadImage("/textures/redbutton.png"));
+		SpriteSheet greenButton = new SpriteSheet(ImageLoader.loadImage("/textures/greenbutton.png"));
+		
+		btn_start = new BufferedImage[2];
+		btn_start[0] = greenButton.crop(0, 0, 256, 256);
+		btn_start[1] = redButton.crop(0, 0, 256, 256);
 		
 		player_down = new BufferedImage[4];
 		player_down[0] = sheet.crop(0, 0, sWidth, sHeight);
