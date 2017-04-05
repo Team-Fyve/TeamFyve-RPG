@@ -8,6 +8,7 @@ import dev.whiting.javatilegame.gfx.Assets;
 import dev.whiting.javatilegame.gfx.GameCamera;
 import dev.whiting.javatilegame.input.KeyManager;
 import dev.whiting.javatilegame.input.MouseManager;
+import dev.whiting.javatilegame.sound.Sound;
 import dev.whiting.javatilegame.states.GameState;
 import dev.whiting.javatilegame.states.MenuState;
 import dev.whiting.javatilegame.states.State;
@@ -23,6 +24,7 @@ public class Game implements Runnable {
 	
 	private BufferStrategy bs;
 	private Graphics g;
+        public static Sound sound = new Sound();
 	
 	public State gameState;
 	public State menuState;
@@ -43,6 +45,7 @@ public class Game implements Runnable {
 	}
 	
 	private void init() {
+                
 		display = new Display(title, width, height);
 		display.getFrame().addKeyListener(keyManager);
 		display.getFrame().addMouseListener(mouseManager);

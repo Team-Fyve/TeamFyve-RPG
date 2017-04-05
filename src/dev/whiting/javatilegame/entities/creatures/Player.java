@@ -1,5 +1,6 @@
 package dev.whiting.javatilegame.entities.creatures;
 
+import dev.whiting.javatilegame.Game;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
@@ -47,6 +48,7 @@ public class Player extends Creature {
 		
 		if(handler.getKeyManager().up) {
 			yMove = -speed;
+                        Game.sound.playBackGround("/sounds/fired");
 		}
 		if(handler.getKeyManager().down) {
 			yMove = +speed;
