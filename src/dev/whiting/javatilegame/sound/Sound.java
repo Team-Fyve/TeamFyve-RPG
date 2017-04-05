@@ -45,34 +45,38 @@ public class Sound implements Runnable {
 
     public void playBackGround(String urlstr) // call to play .wav file
     {
-        if (this.clip != null) {
-            this.clip.stop();
-            this.clip.close();
-        }
-        try {
-            this.clip = AudioSystem.getClip();
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        }
-        url = urlstr + ".wav";
-        this.playSong = true;
-        this.inputStream = null;
-
-        
-        //Add a debounce eventuall so that when the user pushes a key in constantly it will not freeze the sound queue. Also probably should consider
-        //multi threaded sound engine :)
-        if (inputStream == null && playSong) {
-            this.playSong = false;
-            try {
-
-                this.inputStream = AudioSystem.getAudioInputStream(Sound.class.getResource(url));
-                this.clip.open(inputStream);
-                this.clip.loop(10);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+    	(new Thread(){
+    		public void run(){
+		        if (clip != null) {
+		            clip.stop();
+		            clip.close();
+		        }
+		        try {
+		            clip = AudioSystem.getClip();
+		        } catch (LineUnavailableException e) {
+		            e.printStackTrace();
+		        }
+		        url = urlstr + ".wav";
+		        playSong = true;
+		        inputStream = null;
+		
+		        
+		        //Add a debounce eventuall so that when the user pushes a key in constantly it will not freeze the sound queue. Also probably should consider
+		        //multi threaded sound engine :)
+		        if (inputStream == null && playSong) {
+		            playSong = false;
+		            try {
+		
+		                inputStream = AudioSystem.getAudioInputStream(Sound.class.getResource(url));
+		                clip.open(inputStream);
+		                clip.loop(10);
+		
+		            } catch (Exception e) {
+		                e.printStackTrace();
+		            }
+		        }
+    		}
+    	}).start();
     }
 
     public void disposeSound() {
