@@ -7,14 +7,45 @@ import dev.whiting.javatilegame.Handler;
 
 public abstract class Entity {
 
+	public static final int DEFAULT_HEALTH = 10;
+	
+	protected int health;
 	protected Handler handler;
 	protected float x, y;
 	protected int width, height;
 	protected Rectangle bounds;
+	protected boolean active = true;
 	
+	public int getHealth() {
+		return health;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	
+	public void hurt(int amt) {
+		health -= amt;
+		if (health <= 0) {
+			active = false;
+			die();
+		}
+	}
+	
+	public abstract void die();
+
 	public Entity(Handler handler, float x, float y, int width, int height) {
 		this.x = x;
 		this.y = y;
+		health = DEFAULT_HEALTH;
 		this.width = width;
 		this.height = height;
 		this.handler = handler;
