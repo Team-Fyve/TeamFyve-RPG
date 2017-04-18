@@ -4,19 +4,24 @@ import java.awt.image.BufferedImage;
 
 public class Assets {
 	
-	private static final int sWidth = 32, sHeight = 50, tWidth = 100, tHeight = 100;
+	private static final int sWidth = 32, sHeight = 50, tWidth = 64, tHeight = 64;
 	
-	public static BufferedImage grass, stone, rock, tree, redButton, greenButton;
+	public static BufferedImage grass, stone;
+	public static BufferedImage tree;
+	public static BufferedImage fenceLR, fenceTR, fenceTL, fenceTBR, fenceTBL;
+	public static BufferedImage roadTB, roadLR, roadTL, roadTR, roadBL, roadBR, road4W;
+	public static BufferedImage redButton, greenButton;
 	public static BufferedImage[] player_down, player_up, player_left, player_right;
 	public static BufferedImage[] btn_start;
 
 	public static void init() {
+		
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/TestSpriteSheet.png"));
-		SpriteSheet tiles = new SpriteSheet(ImageLoader.loadImage("/textures/GroundTiles.jpg"));
-		SpriteSheet extra = new SpriteSheet(ImageLoader.loadImage("/textures/ExtraTiles.png"));
-		SpriteSheet stat = new SpriteSheet(ImageLoader.loadImage("/textures/TestTreeSprite.png"));
+		SpriteSheet tiles = new SpriteSheet(ImageLoader.loadImage("/textures/GameTiles.png"));
 		SpriteSheet redButton = new SpriteSheet(ImageLoader.loadImage("/textures/redbutton.png"));
 		SpriteSheet greenButton = new SpriteSheet(ImageLoader.loadImage("/textures/greenbutton.png"));
+		
+		BufferedImage tree = new SpriteSheet(ImageLoader.loadImage("/textures/Tree.png")).crop(0, 0, 64, 128);
 		
 		btn_start = new BufferedImage[2];
 		btn_start[0] = greenButton.crop(0, 0, 256, 256);
@@ -45,11 +50,24 @@ public class Assets {
 		player_left[1] = sheet.crop(sWidth, sHeight, sWidth, sHeight);
 		player_left[2] = sheet.crop(2 * sWidth, sHeight, sWidth, sHeight);
 		player_left[3] = sheet.crop(3 * sWidth, sHeight, sWidth, sHeight);
-		
+	
 		grass = tiles.crop(0, 0, tWidth, tHeight);
-		stone = tiles.crop(3*tWidth, 0, tWidth, tHeight);
-		rock = extra.crop(0, 0, 50, 50);
-		tree = stat.crop(6, 7, 206, 237);
+		stone = tiles.crop(tWidth, 3 * tHeight, tWidth, tHeight);
+		
+		fenceLR = tiles.crop(tWidth, 0, tWidth, tHeight);
+		fenceTR = tiles.crop(2 * tWidth, 0, tWidth, tHeight);
+		fenceTL = tiles.crop(3 * tWidth, 0, tWidth, tHeight);
+		fenceTBR = tiles.crop(0, tHeight, tWidth, tHeight);
+		fenceTBL = tiles.crop(tWidth, tHeight, tWidth, tHeight);
+		
+		roadTB = tiles.crop(2 * tWidth, tHeight, tWidth, tHeight);
+		roadLR = tiles.crop(3 * tWidth, tHeight, tWidth, tHeight);
+		roadTL = tiles.crop(0, 2 * tHeight, tWidth, tHeight);
+		roadTR = tiles.crop(2 * tWidth, 2 * tHeight, tWidth, tHeight);
+		roadBL = tiles.crop(tWidth, 2 * tHeight, tWidth, tHeight);
+		roadBR = tiles.crop(3 * tWidth, 2 * tHeight, tWidth, tHeight);
+		road4W = tiles.crop(0, 3 * tHeight, tWidth, tHeight);
+		
 	}
 	
 }

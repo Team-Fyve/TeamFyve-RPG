@@ -6,11 +6,13 @@ import java.util.Comparator;
 
 import dev.whiting.javatilegame.Handler;
 import dev.whiting.javatilegame.entities.creatures.Player;
+import dev.whiting.javatilegame.entities.statics.Tree;
 
 public class EntityManager {
 
 	private Handler handler;
 	private Player player;
+	private Entity tree = new Tree(handler, 128, 640);
 	private ArrayList<Entity> entities;
 	private Comparator<Entity> renderSorter = new Comparator<Entity>() {
 
@@ -29,6 +31,7 @@ public class EntityManager {
 		this.player = player;
 		entities = new ArrayList<Entity>();
 		addEntity(player);
+		//addEntity(tree);
 	}
 	
 	public void tick() {
