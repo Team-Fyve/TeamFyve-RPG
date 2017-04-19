@@ -21,7 +21,7 @@ public class Assets {
 		SpriteSheet redButton = new SpriteSheet(ImageLoader.loadImage("/textures/redbutton.png"));
 		SpriteSheet greenButton = new SpriteSheet(ImageLoader.loadImage("/textures/greenbutton.png"));
 		
-		BufferedImage tree = new SpriteSheet(ImageLoader.loadImage("/textures/Tree.png")).crop(0, 0, 64, 128);
+		tree = new SpriteSheet(ImageLoader.loadImage("/textures/Tree.png")).crop(0, 0, 64, 128);
 		
 		btn_start = new BufferedImage[2];
 		btn_start[0] = greenButton.crop(0, 0, 256, 256);

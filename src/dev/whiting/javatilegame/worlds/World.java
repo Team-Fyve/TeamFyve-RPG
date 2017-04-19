@@ -6,6 +6,7 @@ import dev.whiting.javatilegame.Handler;
 import dev.whiting.javatilegame.entities.EntityManager;
 import dev.whiting.javatilegame.entities.creatures.Player;
 import dev.whiting.javatilegame.entities.statics.Tree;
+import dev.whiting.javatilegame.items.ItemManager;
 import dev.whiting.javatilegame.tiles.Tile;
 import dev.whiting.javatilegame.utils.Utils;
 
@@ -17,11 +18,26 @@ public class World {
 	private int[][] tiles;
 	
 	private EntityManager entityManager;
+	private ItemManager itemManager;
 	
 	public World(Handler handler, String path) {
 		this.handler = handler;
 		entityManager = new EntityManager(handler, new Player(handler, 250, 250));
-		entityManager.addEntity(new Tree(handler, 300, 300));
+		itemManager = new ItemManager(handler);
+		
+		entityManager.addEntity(new Tree(handler, 200, 400));
+		entityManager.addEntity(new Tree(handler, 250, 400));
+		entityManager.addEntity(new Tree(handler, 300, 400));
+		entityManager.addEntity(new Tree(handler, 150, 400));
+		entityManager.addEntity(new Tree(handler, 100, 400));
+		entityManager.addEntity(new Tree(handler, 350, 400));
+		
+		entityManager.addEntity(new Tree(handler, 200, 500));
+		entityManager.addEntity(new Tree(handler, 250, 500));
+		entityManager.addEntity(new Tree(handler, 300, 500));
+		entityManager.addEntity(new Tree(handler, 100, 500));
+		entityManager.addEntity(new Tree(handler, 150, 500));
+		entityManager.addEntity(new Tree(handler, 350, 500));
 		
 		loadWorld(path);
 		
@@ -30,6 +46,7 @@ public class World {
 	}
 	
 	public void tick() {
+		itemManager.tick();
 		entityManager.tick();
 	}
 	
@@ -45,6 +62,7 @@ public class World {
 						(int) (y * Tile.TILE_HEIGHT - handler.getGameCamera().getyOffset()));
 			}
 		}
+		itemManager.render(g);
 		entityManager.render(g);
 	}
 	
@@ -76,6 +94,22 @@ public class World {
 		}
 	}
 	
+	public Handler getHandler() {
+		return handler;
+	}
+
+	public void setHandler(Handler handler) {
+		this.handler = handler;
+	}
+
+	public ItemManager getItemManager() {
+		return itemManager;
+	}
+
+	public void setItemManager(ItemManager itemManager) {
+		this.itemManager = itemManager;
+	}
+
 	public int getWidth() {
 		return width;
 	}

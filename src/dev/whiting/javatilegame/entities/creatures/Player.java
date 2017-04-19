@@ -11,6 +11,7 @@ import dev.whiting.javatilegame.Handler;
 import dev.whiting.javatilegame.entities.Entity;
 import dev.whiting.javatilegame.gfx.Animation;
 import dev.whiting.javatilegame.gfx.Assets;
+import dev.whiting.javatilegame.inventory.Inventory;
 
 public class Player extends Creature {
 	
@@ -21,6 +22,8 @@ public class Player extends Creature {
 	
 	private long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
 
+	private Inventory inventory;
+	
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
 		
@@ -33,6 +36,8 @@ public class Player extends Creature {
 		animUp = new Animation(200, Assets.player_up);
 		animRight = new Animation(200, Assets.player_right);
 		animLeft = new Animation(200, Assets.player_left);
+		
+		inventory = new Inventory(handler);
 	}
 
 	@Override
@@ -48,6 +53,8 @@ public class Player extends Creature {
 		handler.getGameCamera().centerOnEntity(this);
 		
 		checkAttacks();
+		
+		inventory.tick();
 	}
 	
 	private void checkAttacks() {
@@ -121,7 +128,9 @@ public class Player extends Creature {
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+		inventory.render(g);
 		
+		//red rectangle to show that attacks are happening
 		if (handler.getKeyManager().aRight || handler.getKeyManager().aLeft || 
 				handler.getKeyManager().aUp || handler.getKeyManager().aDown && 
 				attackTimer < attackCooldown) {
@@ -147,6 +156,14 @@ public class Player extends Creature {
 		} else {
 			return Assets.player_down[0];
 		}
+	}
+
+	public Inventory getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
 	}
 
 }

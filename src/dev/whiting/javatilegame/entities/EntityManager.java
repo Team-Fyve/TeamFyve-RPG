@@ -3,17 +3,17 @@ package dev.whiting.javatilegame.entities;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 
 import dev.whiting.javatilegame.Handler;
 import dev.whiting.javatilegame.entities.creatures.Player;
-import dev.whiting.javatilegame.entities.statics.Tree;
 
 public class EntityManager {
 
 	private Handler handler;
 	private Player player;
-	private Entity tree = new Tree(handler, 128, 640);
 	private ArrayList<Entity> entities;
+
 	private Comparator<Entity> renderSorter = new Comparator<Entity>() {
 
 		@Override
@@ -31,15 +31,15 @@ public class EntityManager {
 		this.player = player;
 		entities = new ArrayList<Entity>();
 		addEntity(player);
-		//addEntity(tree);
 	}
 	
 	public void tick() {
-		for (int i = 0; i < entities.size(); i++) {
-			Entity e = entities.get(i);
+		Iterator<Entity> it = entities.iterator();
+		while (it.hasNext()) {
+			Entity e = it.next();
 			e.tick();
 			if (!e.isActive()) {
-				entities.remove(e);
+				it.remove();
 			}
 		}
 		entities.sort(renderSorter);
