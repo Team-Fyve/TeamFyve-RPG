@@ -2,11 +2,13 @@ package dev.whiting.javatilegame.gfx;
 
 import java.awt.image.BufferedImage;
 
+import dev.whiting.javatilegame.items.Item;
+
 public class Assets {
 	
 	private static final int sWidth = 32, sHeight = 50, tWidth = 64, tHeight = 64;
 	
-	public static BufferedImage grass, stone;
+	public static BufferedImage grass, stone, wood;
 	public static BufferedImage tree;
 	public static BufferedImage fenceLR, fenceTR, fenceTL, fenceTBR, fenceTBL;
 	public static BufferedImage roadTB, roadLR, roadTL, roadTR, roadBL, roadBR, road4W;
@@ -20,6 +22,8 @@ public class Assets {
 		SpriteSheet tiles = new SpriteSheet(ImageLoader.loadImage("/textures/GameTiles.png"));
 		SpriteSheet redButton = new SpriteSheet(ImageLoader.loadImage("/textures/redbutton.png"));
 		SpriteSheet greenButton = new SpriteSheet(ImageLoader.loadImage("/textures/greenbutton.png"));
+
+		wood = new SpriteSheet(ImageLoader.loadImage("/textures/Wood.png")).crop(0, 0, Item.ITEMWIDTH, Item.ITEMHEIGHT);
 		
 		tree = new SpriteSheet(ImageLoader.loadImage("/textures/Tree.png")).crop(0, 0, 64, 128);
 		

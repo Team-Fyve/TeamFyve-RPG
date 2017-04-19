@@ -5,13 +5,12 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import dev.whiting.javatilegame.Handler;
+import dev.whiting.javatilegame.gfx.Assets;
 
 public class Item {
 
 	public static Item[] items = new Item[256];
-	//public static Item wood = new Item(Assets.wood, "Wood", 0);
-	
-	
+	public static Item wood = new Item(Assets.wood, "Wood", 0);
 	
 	public static final int ITEMWIDTH = 32, ITEMHEIGHT = 32;
 	

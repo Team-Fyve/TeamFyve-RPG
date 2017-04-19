@@ -32,7 +32,7 @@ public class Tree extends StaticEntity {
 	
 	@Override
 	public void die() {
-		//handler.getWorld().getItemManager().addItem(Item.wood.createNew((int) x, (int) y));
+		handler.getWorld().getItemManager().addItem(Item.wood.createNew((int) x, (int) y));
 	}
 
 }
