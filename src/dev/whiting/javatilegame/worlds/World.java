@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import dev.whiting.javatilegame.Handler;
 import dev.whiting.javatilegame.entities.EntityManager;
 import dev.whiting.javatilegame.entities.creatures.Player;
+import dev.whiting.javatilegame.entities.statics.Boulder;
 import dev.whiting.javatilegame.entities.statics.Tree;
 import dev.whiting.javatilegame.items.ItemManager;
 import dev.whiting.javatilegame.tiles.Tile;
@@ -38,6 +39,11 @@ public class World {
 		entityManager.addEntity(new Tree(handler, 100, 500));
 		entityManager.addEntity(new Tree(handler, 150, 500));
 		entityManager.addEntity(new Tree(handler, 350, 500));
+		
+		entityManager.addEntity(new Boulder(handler, 640, 400));
+		entityManager.addEntity(new Boulder(handler, 710, 400));
+		entityManager.addEntity(new Boulder(handler, 780, 400));
+		entityManager.addEntity(new Boulder(handler, 570, 400));
 		
 		loadWorld(path);
 		

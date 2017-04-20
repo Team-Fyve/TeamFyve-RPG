@@ -8,8 +8,8 @@ public class Assets {
 	
 	private static final int sWidth = 32, sHeight = 50, tWidth = 64, tHeight = 64;
 	
-	public static BufferedImage grass, stone, wood;
-	public static BufferedImage tree;
+	public static BufferedImage grass, stone, wood, rock;
+	public static BufferedImage tree, boulder;
 	public static BufferedImage fenceLR, fenceTR, fenceTL, fenceTBR, fenceTBL;
 	public static BufferedImage roadTB, roadLR, roadTL, roadTR, roadBL, roadBR, road4W;
 	public static BufferedImage redButton, greenButton;
@@ -24,8 +24,10 @@ public class Assets {
 		SpriteSheet greenButton = new SpriteSheet(ImageLoader.loadImage("/textures/greenbutton.png"));
 
 		wood = new SpriteSheet(ImageLoader.loadImage("/textures/Wood.png")).crop(0, 0, Item.ITEMWIDTH, Item.ITEMHEIGHT);
-		
 		tree = new SpriteSheet(ImageLoader.loadImage("/textures/Tree.png")).crop(0, 0, 64, 128);
+		
+		boulder = new SpriteSheet(ImageLoader.loadImage("/textures/Boulder.png")).crop(0, 0, 64, 64);
+		rock = new SpriteSheet(ImageLoader.loadImage("/textures/Rock.png")).crop(0, 0, Item.ITEMWIDTH, Item.ITEMHEIGHT);
 		
 		btn_start = new BufferedImage[2];
 		btn_start[0] = greenButton.crop(0, 0, 256, 256);

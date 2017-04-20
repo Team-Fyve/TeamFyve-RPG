@@ -11,6 +11,7 @@ public class Item {
 
 	public static Item[] items = new Item[256];
 	public static Item wood = new Item(Assets.wood, "Wood", 0);
+	public static Item rock = new Item(Assets.rock, "Rock", 1);
 	
 	public static final int ITEMWIDTH = 32, ITEMHEIGHT = 32;
 	
