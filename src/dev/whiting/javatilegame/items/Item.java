@@ -9,6 +9,8 @@ import dev.whiting.javatilegame.gfx.Assets;
 
 public class Item {
 
+	
+	
 	public static Item[] items = new Item[256];
 	public static Item wood = new Item(Assets.wood, "Wood", 0);
 	public static Item rock = new Item(Assets.rock, "Rock", 1);
@@ -62,13 +64,19 @@ public class Item {
 		return i;
 	}
 	
+	public Item createNew(int count) {
+		Item i = new Item(texture, name, id);
+		i.setPickedUp(true);
+		i.setCount(count);
+		return i;
+	}
+	
 	public void setPosition(int x, int y) {
 		this.x = x;
 		this.y = y;
 		bounds.x = x;
 		bounds.y = y;
 	}
-	
 
 	public Handler getHandler() {
 		return handler;

@@ -65,6 +65,10 @@ public class Player extends Creature {
 			return;
 		} 
 		
+		if(inventory.isActive()) {
+			return;
+		}
+		
 		java.awt.Rectangle cb = getCollisionBounds(0,0);
 		java.awt.Rectangle ar = new Rectangle();
 		int arSize = 20;
@@ -110,6 +114,10 @@ public class Player extends Creature {
 		xMove = 0;
 		yMove = 0;
 		
+		if(inventory.isActive()) {
+			return;
+		}
+		
 		if(handler.getKeyManager().up) {
 			yMove = -speed;
                         Game.sound.playBackGround("/sounds/fired");
@@ -128,8 +136,7 @@ public class Player extends Creature {
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
-		inventory.render(g);
-		
+				
 		//red rectangle to show that attacks are happening
 		if (handler.getKeyManager().aRight || handler.getKeyManager().aLeft || 
 				handler.getKeyManager().aUp || handler.getKeyManager().aDown && 
@@ -142,6 +149,10 @@ public class Player extends Creature {
 			g.setColor(null);
 		}
 		
+	}
+	
+	public void postRender(Graphics g) {
+		inventory.render(g);
 	}
 	
 	private BufferedImage getCurrentAnimationFrame() {

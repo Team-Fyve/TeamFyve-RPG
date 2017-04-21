@@ -1,10 +1,13 @@
 package dev.whiting.javatilegame.inventory;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import dev.whiting.javatilegame.Handler;
+import dev.whiting.javatilegame.gfx.Assets;
+import dev.whiting.javatilegame.gfx.Text;
 import dev.whiting.javatilegame.items.Item;
 
 public class Inventory {
@@ -12,6 +15,16 @@ public class Inventory {
 	private Handler handler;
 	private boolean active = false;
 	private ArrayList<Item> inventoryItems;
+	
+	private int invX = 64, invY = 48, invW = 512, invH = 384;
+	private int invListCenterX = invX + 171;
+	private int invListCenterY = invY + invH / 2 + 5;
+	private int invListSpacing = 30;
+	
+	private int invImageX = 452, invImageY = 82, invImageW = 64, invImageH = 64;
+	private int invCountX = 484, invCountY = 172;
+	
+	private int selectedItem = 0;
 	
 	public Inventory(Handler handler) {
 		this.handler = handler;
@@ -25,12 +38,45 @@ public class Inventory {
 		if (!active) {
 			return;
 		}
+		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_W)) {
+			selectedItem--;
+		}
+		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_S)) {
+			selectedItem++;
+		}
+		if (selectedItem < 0) {
+			selectedItem = inventoryItems.size() - 1;
+		} else if (selectedItem >= inventoryItems.size()) {
+			selectedItem = 0;
+		}
 	}
 	
 	public void render(Graphics g) {
 		if (!active) {
 			return;
 		}
+		g.drawImage(Assets.inventoryScreen, invX, invY, invW, invH, null);
+	
+		int len = inventoryItems.size();
+		if (len == 0) {
+			return;
+		}
+		for (int i = -5; i < 6; i++) {
+			if (selectedItem + i < 0 || selectedItem + i >= len) {
+				continue;
+			}
+			if (i == 0) {
+				Text.drawString(g, "> " + inventoryItems.get(selectedItem + i).getName() + " <", invListCenterX,
+						invListCenterY + i * invListSpacing, true, Color.YELLOW, Assets.font28);
+			} else {
+			Text.drawString(g, inventoryItems.get(selectedItem + i).getName(), invListCenterX,
+					invListCenterY + i * invListSpacing, true, Color.WHITE, Assets.font28);
+			}
+		}
+		
+		Item item = inventoryItems.get(selectedItem);
+		g.drawImage(item.getTexture(), invImageX, invImageY, invImageW, invImageH, null);
+		Text.drawString(g, Integer.toString(item.getCount()), invCountX, invCountY, true, Color.WHITE, Assets.font28);
 	}
 	
 	public void addItem(Item item) {
@@ -49,6 +95,10 @@ public class Inventory {
 
 	public void setHandler(Handler handler) {
 		this.handler = handler;
+	}
+
+	public boolean isActive() {
+		return active;
 	}
 	
 }
