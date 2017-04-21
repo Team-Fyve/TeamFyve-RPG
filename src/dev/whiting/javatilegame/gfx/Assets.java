@@ -7,7 +7,7 @@ public class Assets {
 	
 	private static final int sWidth = 32, sHeight = 50, tWidth = 64, tHeight = 64;
 	
-	public static BufferedImage grass, stone, wood, rock;
+	public static BufferedImage grass, stone, wood, rock, water;
 	public static BufferedImage tree, boulder;
 	public static BufferedImage fenceLR, fenceTR, fenceTL, fenceTBR, fenceTBL;
 	public static BufferedImage roadTB, roadLR, roadTL, roadTR, roadBL, roadBR, road4W;
@@ -65,6 +65,7 @@ public class Assets {
 	
 		grass = tiles.crop(0, 0, tWidth, tHeight);
 		stone = tiles.crop(tWidth, 3 * tHeight, tWidth, tHeight);
+		water = tiles.crop(tWidth * 2, tHeight * 3, tWidth, tHeight);
 		
 		fenceLR = tiles.crop(tWidth, 0, tWidth, tHeight);
 		fenceTR = tiles.crop(2 * tWidth, 0, tWidth, tHeight);
