@@ -8,4 +8,8 @@ public class StoneTile extends Tile {
 		super(Assets.stone, id);
 	}
 
+	public boolean isSolid() {
+		return true;
+	}
+
 }

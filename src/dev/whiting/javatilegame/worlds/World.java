@@ -41,7 +41,6 @@ public class World {
 		entityManager.addEntity(new Tree(handler, 350, 500));
 		
 		entityManager.addEntity(new Boulder(handler, 640, 400));
-		entityManager.addEntity(new Boulder(handler, 710, 400));
 		entityManager.addEntity(new Boulder(handler, 780, 400));
 		entityManager.addEntity(new Boulder(handler, 570, 400));
 		
