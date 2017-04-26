@@ -8,4 +8,8 @@ public class FenceTBL extends Tile {
 		super(Assets.fenceTBL, id);
 	}
 	
+	public boolean isSolid() {
+		return true;
+	}
+	
 }

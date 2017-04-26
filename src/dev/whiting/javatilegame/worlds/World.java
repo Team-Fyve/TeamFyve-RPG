@@ -26,23 +26,43 @@ public class World {
 		entityManager = new EntityManager(handler, new Player(handler, 250, 250));
 		itemManager = new ItemManager(handler);
 		
-		entityManager.addEntity(new Tree(handler, 200, 400));
-		entityManager.addEntity(new Tree(handler, 250, 400));
-		entityManager.addEntity(new Tree(handler, 300, 400));
-		entityManager.addEntity(new Tree(handler, 150, 400));
-		entityManager.addEntity(new Tree(handler, 100, 400));
-		entityManager.addEntity(new Tree(handler, 350, 400));
+		entityManager.addEntity(new Tree(handler, 768, 192));
+		entityManager.addEntity(new Tree(handler, 768, 320));
+		entityManager.addEntity(new Tree(handler, 768, 448));
+		entityManager.addEntity(new Tree(handler, 768, 256));
+		entityManager.addEntity(new Tree(handler, 768, 384));
 		
-		entityManager.addEntity(new Tree(handler, 200, 500));
-		entityManager.addEntity(new Tree(handler, 250, 500));
-		entityManager.addEntity(new Tree(handler, 300, 500));
-		entityManager.addEntity(new Tree(handler, 100, 500));
-		entityManager.addEntity(new Tree(handler, 150, 500));
-		entityManager.addEntity(new Tree(handler, 350, 500));
+		entityManager.addEntity(new Tree(handler, 832, 192));
+		entityManager.addEntity(new Tree(handler, 832, 320));
+		entityManager.addEntity(new Tree(handler, 832, 448));
+		entityManager.addEntity(new Tree(handler, 832, 256));
+		entityManager.addEntity(new Tree(handler, 832, 384));
 		
-		entityManager.addEntity(new Boulder(handler, 640, 400));
-		entityManager.addEntity(new Boulder(handler, 780, 400));
-		entityManager.addEntity(new Boulder(handler, 570, 400));
+		entityManager.addEntity(new Tree(handler, 896, 192));
+		entityManager.addEntity(new Tree(handler, 896, 320));
+		entityManager.addEntity(new Tree(handler, 896, 448));
+		entityManager.addEntity(new Tree(handler, 896, 256));
+		entityManager.addEntity(new Tree(handler, 896, 384));
+		
+		entityManager.addEntity(new Tree(handler, 960, 192));
+		entityManager.addEntity(new Tree(handler, 960, 320));
+		entityManager.addEntity(new Tree(handler, 960, 448));
+		entityManager.addEntity(new Tree(handler, 960, 256));
+		entityManager.addEntity(new Tree(handler, 960, 384));
+		
+		entityManager.addEntity(new Tree(handler, 1024, 192));
+		entityManager.addEntity(new Tree(handler, 1024, 320));
+		entityManager.addEntity(new Tree(handler, 1024, 448));
+		entityManager.addEntity(new Tree(handler, 1024, 256));
+		entityManager.addEntity(new Tree(handler, 1024, 384));
+		
+		entityManager.addEntity(new Boulder(handler, 256, 1728));
+		entityManager.addEntity(new Boulder(handler, 320, 1728));
+		entityManager.addEntity(new Boulder(handler, 384, 1728));
+
+		entityManager.addEntity(new Boulder(handler, 256, 1792));
+		entityManager.addEntity(new Boulder(handler, 320, 1792));
+		entityManager.addEntity(new Boulder(handler, 384, 1792));
 		
 		loadWorld(path);
 		
