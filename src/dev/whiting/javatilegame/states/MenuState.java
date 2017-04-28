@@ -7,6 +7,7 @@ import dev.whiting.javatilegame.gfx.Assets;
 import dev.whiting.javatilegame.ui.ClickListener;
 import dev.whiting.javatilegame.ui.UIImageButton;
 import dev.whiting.javatilegame.ui.UIManager;
+import javafx.application.Platform;
 
 public class MenuState extends State {
 	
@@ -17,12 +18,21 @@ public class MenuState extends State {
 		uiManager = new UIManager(handler);
 		handler.getMouseManager().setUIManager(uiManager);
 		
-		uiManager.addObject(new UIImageButton(250, 150, 256, 256, Assets.btn_start, new ClickListener(){
+		uiManager.addObject(new UIImageButton(230, 128, 256, 128, Assets.start, new ClickListener() {
 
 			@Override
 			public void onClick() {
 				handler.getMouseManager().setUIManager(null);
 				State.setState(handler.getGame().gameState);
+			}
+		}));
+		
+		uiManager.addObject(new UIImageButton(230, 280, 256, 128, Assets.quit, new ClickListener() {
+
+			@Override
+			public void onClick() {
+				handler.getMouseManager().setUIManager(null);
+				System.exit(0);
 			}
 		}));
 	}

@@ -7,14 +7,12 @@ public class Assets {
 	
 	private static final int sWidth = 32, sHeight = 50, tWidth = 64, tHeight = 64;
 	
-	public static BufferedImage grass, stone, wood, rock, water;
-	public static BufferedImage tree, boulder;
+	public static BufferedImage grass, stone, wood, rock, water, tree, boulder, inventoryScreen;
 	public static BufferedImage fenceLR, fenceTR, fenceTL, fenceTBR, fenceTBL;
 	public static BufferedImage roadTB, roadLR, roadTL, roadTR, roadBL, roadBR, road4W;
-	public static BufferedImage redButton, greenButton;
-	public static BufferedImage inventoryScreen;
+	public static BufferedImage startB, startW, quitB, quitW;
 	public static BufferedImage[] player_down, player_up, player_left, player_right;
-	public static BufferedImage[] btn_start;
+	public static BufferedImage[] start, quit;
 	
 	public static Font font28;
 
@@ -24,8 +22,7 @@ public class Assets {
 		
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/TestSpriteSheet.png"));
 		SpriteSheet tiles = new SpriteSheet(ImageLoader.loadImage("/textures/GameTiles.png"));
-		SpriteSheet redButton = new SpriteSheet(ImageLoader.loadImage("/textures/redbutton.png"));
-		SpriteSheet greenButton = new SpriteSheet(ImageLoader.loadImage("/textures/greenbutton.png"));
+		SpriteSheet menu = new SpriteSheet(ImageLoader.loadImage("/textures/MenuImages.png"));
 		
 		inventoryScreen = ImageLoader.loadImage("/textures/inventoryScreen.png");
 
@@ -35,9 +32,18 @@ public class Assets {
 		boulder = ImageLoader.loadImage("/textures/Boulder.png");
 		rock = ImageLoader.loadImage("/textures/Rock.png");
 		
-		btn_start = new BufferedImage[2];
-		btn_start[0] = greenButton.crop(0, 0, 256, 256);
-		btn_start[1] = redButton.crop(0, 0, 256, 256);
+		startB = menu.crop(0, 0, 256, 128);
+		startW = menu.crop(0, 128, 256, 128);
+		quitB = menu.crop(0, 256, 256, 128);
+		quitW = menu.crop(0, 384, 256, 128);
+		
+		start = new BufferedImage[2];
+		start[0] = startB;
+		start[1] = startW;
+		
+		quit = new BufferedImage[2];
+		quit[0] = quitB;
+		quit[1] = quitW;
 		
 		player_down = new BufferedImage[4];
 		player_down[0] = sheet.crop(0, 0, sWidth, sHeight);
