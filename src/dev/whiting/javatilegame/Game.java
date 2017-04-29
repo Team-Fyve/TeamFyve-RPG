@@ -1,6 +1,7 @@
 package dev.whiting.javatilegame;
 
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 
 import dev.whiting.javatilegame.display.Display;
@@ -67,6 +68,10 @@ public class Game implements Runnable {
 		
 		if(State.getState() != null) {
 			State.getState().tick();
+		}
+		
+		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_Q)) {
+			State.setState(new MenuState(handler));
 		}
 	}
 	

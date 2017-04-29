@@ -1,6 +1,7 @@
 package dev.whiting.javatilegame.worlds;
 
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 
 import dev.whiting.javatilegame.Handler;
 import dev.whiting.javatilegame.entities.EntityManager;
@@ -8,6 +9,7 @@ import dev.whiting.javatilegame.entities.creatures.Player;
 import dev.whiting.javatilegame.entities.statics.Boulder;
 import dev.whiting.javatilegame.entities.statics.Tree;
 import dev.whiting.javatilegame.items.ItemManager;
+import dev.whiting.javatilegame.states.State;
 import dev.whiting.javatilegame.tiles.Tile;
 import dev.whiting.javatilegame.utils.Utils;
 
