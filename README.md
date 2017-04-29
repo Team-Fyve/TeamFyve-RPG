@@ -3,6 +3,8 @@
 ### **Author(s):** Jason Whiting and Lucas Johns. 
 #### Code inspired by CodeNMore's "NEW Beginner 2D Game Programming" YouTube series.
 
+GAME DEMO ON YOUTUBE: https://www.youtube.com/watch?v=0CsaGxeKoTY 
+
 This game is a tile-based, top-down RPG similar to the Pokemon or Fire Emblem franchises, but written
 in Java. Its code was written following CodeNMore's YouTube series, with slight changes made 
 along the way to personalize the game. The game's narrative (its characters, locations, events, setting,
