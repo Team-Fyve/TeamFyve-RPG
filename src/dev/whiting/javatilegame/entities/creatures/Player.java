@@ -1,7 +1,5 @@
 package dev.whiting.javatilegame.entities.creatures;
 
-import dev.whiting.javatilegame.Game;
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -12,6 +10,7 @@ import dev.whiting.javatilegame.entities.Entity;
 import dev.whiting.javatilegame.gfx.Animation;
 import dev.whiting.javatilegame.gfx.Assets;
 import dev.whiting.javatilegame.inventory.Inventory;
+import dev.whiting.javatilegame.sound.AudioPlayer;
 
 public class Player extends Creature {
 	
@@ -24,6 +23,7 @@ public class Player extends Creature {
 
 	private Inventory inventory;
 	
+	private AudioPlayer walk;
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
 		
@@ -38,6 +38,9 @@ public class Player extends Creature {
 		animLeft = new Animation(200, Assets.player_left);
 		
 		inventory = new Inventory(handler);
+		walk = new AudioPlayer("/sounds/walk.mp3");
+		
+		
 	}
 
 	@Override
@@ -117,19 +120,25 @@ public class Player extends Creature {
 		if(inventory.isActive()) {
 			return;
 		}
-		
-		if(handler.getKeyManager().up) {
-			yMove = -speed;
-                        Game.sound.playBackGround("/sounds/fired");
-		}
-		if(handler.getKeyManager().down) {
-			yMove = +speed;
-		}
-		if(handler.getKeyManager().left) {
-			xMove = -speed;
-		}
-		if(handler.getKeyManager().right) {
-			xMove = +speed;
+		if(handler.getKeyManager().up||handler.getKeyManager().down||handler.getKeyManager().left||handler.getKeyManager().right){
+			if(handler.getKeyManager().up) {
+				yMove = -speed;
+				walk.play();
+			}
+			if(handler.getKeyManager().down) {
+				yMove = +speed;
+				walk.play();
+			}
+			if(handler.getKeyManager().left) {
+				xMove = -speed;
+				walk.play();
+			}
+			if(handler.getKeyManager().right) {
+				xMove = +speed;
+				walk.play();
+			}
+		}else{
+			walk.stop();
 		}
 	}
 
@@ -154,6 +163,12 @@ public class Player extends Creature {
 	public void postRender(Graphics g) {
 		inventory.render(g);
 	}
+	
+	
+	
+	/*
+	 *  Need to figure out a way to stop the audio when the key becomes released
+	 */
 	
 	private BufferedImage getCurrentAnimationFrame() {
 		if (xMove < 0) {
